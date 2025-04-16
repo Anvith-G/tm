@@ -72,7 +72,7 @@ xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/n
     <description></description>
     <display-name>UpdateStudentController</display-name>
     <servlet-name>UpdateStudentController</servlet-name>
-    <servlet-class>org.cms.controllers.UpdateStudentController</servlet-class>
+    <servlet-class>org.cms.controller.UpdateStudentController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UpdateStudentController</servlet-name>
@@ -83,7 +83,7 @@ xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/n
     <description></description>
     <display-name>UpdateStudentPostController</display-name>
     <servlet-name>UpdateStudentPostController</servlet-name>
-    <servlet-class>org.cms.controllers.UpdateStudentPostController</servlet-class>
+    <servlet-class>org.cms.controller.UpdateStudentPostController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UpdateStudentPostController</servlet-name>
@@ -108,6 +108,47 @@ xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/n
    <servlet-mapping>
     <servlet-name>AddCourseController</servlet-name>
     <url-pattern>/add-course</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <description></description>
+    <display-name>EditCourseController</display-name>
+    <servlet-name>EditCourseController</servlet-name>
+    <servlet-class>org.cms.controller.EditCourseController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditCourseController</servlet-name>
+    <url-pattern>/edit-course</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateCourseController</display-name>
+    <servlet-name>UpdateCourseController</servlet-name>
+    <servlet-class>org.cms.controller.UpdateCourseController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateCourseController</servlet-name>
+    <url-pattern>/update-course</url-pattern>
+  </servlet-mapping>
+   <servlet>
+   
+    <description></description>
+    <display-name>UpdateCoursePostController</display-name>
+    <servlet-name>UpdateCoursePostController</servlet-name>
+    <servlet-class>org.cms.controller.UpdateCoursePostController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateCoursePostController</servlet-name>
+    <url-pattern>/update-coursePost</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteCourseController</display-name>
+    <servlet-name>DeleteCourseController</servlet-name>
+    <servlet-class>org.cms.controller.DeleteCourseController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteCourseController</servlet-name>
+    <url-pattern>/delete-course</url-pattern>
   </servlet-mapping>
   <context-param>
     <param-name>admin</param-name>

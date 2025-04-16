@@ -28,7 +28,7 @@
         </div>
         
         <button type="submit" class="btn btn-success">Add Course</button>
-        <a href="course-list" class="btn btn-secondary">Cancel</a>
+        <a href="Course" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
 </body>

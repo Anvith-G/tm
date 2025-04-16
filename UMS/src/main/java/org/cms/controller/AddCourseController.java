@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.cms.DataSource.MySqlDBConnection;
 import org.cms.Model.Course;
 import org.cms.Repository.CourseRepository;
-
 import org.cms.Services.CourseServiceImpl;
 
 
@@ -44,26 +43,17 @@ public class AddCourseController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		//Create ServletContext
-		
-		String email=context.getInitParameter("admin");
-		//Create ServletConfig
-		config=getServletConfig();
-		String drivername=config.getInitParameter("driver");
-		String un=config.getInitParameter("username");
-		String pwd=config.getInitParameter("password");
-		response.getWriter().print("<h2>"+"Driver:"+drivername+"</h2>");
-		response.getWriter().print("<h2>"+"User"+un+"</h2>");
-		response.getWriter().print("<h2>"+"Password"+pwd+"</h2>");
-		response.getWriter().print("<h2>"+"mailto:"+email+"</h2>");
+	
 		//Create Session 
 		HttpSession session=request.getSession();
 		//HttpSession session=request.getSession(false);
 		//Receive from Request
-		Course s=new Course();
-		s.setCid(request.getParameter("cid"));
-		s.setCname(request.getParameter("cname"));
-		s.setCredit(request.getParameter("credit"));
-		s.setCtype(request.getParameter("type"));
+		Course c=new Course();
+		c.setCid(request.getParameter("cid"));
+		c.setCname(request.getParameter("cname"));
+		c.setCredit(request.getParameter("credit"));
+		c.setCtype(request.getParameter("type"));
+		System.out.println(c);
 		
 		// perform database operation
 		int r=0;
@@ -71,15 +61,18 @@ public class AddCourseController extends HttpServlet {
 		MySqlDBConnection ds=new MySqlDBConnection();
 		CourseRepository repository=new CourseRepository(ds);
 		CourseServiceImpl service=new CourseServiceImpl(repository);
-	     r=service.insertCourse(s);
+	    r=service.insertCourse(c);
+	    
+	    System.out.println("Inserted"+r);
 		}catch(Exception e) {
 			System.out.println(e);
 		}
 		if(r==1)
-			 response.sendRedirect("course-list.jsp");	
+			 response.sendRedirect("Course");	
 		//request.getRequestDispatcher("/WEB-INF/views/success.jsp").forward(request, response);
 		else
 		response.sendRedirect("error.jsp");	
+		
 	}
 
 }
