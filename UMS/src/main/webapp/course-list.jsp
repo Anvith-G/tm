@@ -15,7 +15,7 @@ HttpSession oldsession=request.getSession(false);
 <body>
 <div class="container mt-5">
     <h2 class="mb-4">Course List</h2>
-    <a href="add-student.jsp" class="btn btn-success mb-3">Add New Course</a>
+    <a href="add-course.jsp" class="btn btn-success mb-3">Add New Course</a>
     <table class="table table-bordered table-striped">
         <thead class="table-dark">
         <tr>
@@ -36,14 +36,14 @@ HttpSession oldsession=request.getSession(false);
             <td><%= c.getCredit()%></td>
             
             <td>
-                <a href="edit-student?id=<%= c.getCid() %>" class="btn btn-sm btn-primary">Edit</a>
-                <a href="delete-student?id=<%= c.getCid() %>" class="btn btn-sm btn-danger">Delete</a>
+                <a href="edit-course?id=<%= c.getCid() %>" class="btn btn-sm btn-primary">Edit</a>
+                <a href="delete-course?id=<%= c.getCid() %>" class="btn btn-sm btn-danger">Delete</a>
             </td>
         </tr>
         <%  }
         } else {
         %>
-        <tr><td colspan="5" class="text-center">No students found</td></tr>
+        <tr><td colspan="5" class="text-center">No Course found</td></tr>
         <% } %>
         </tbody>
     </table>

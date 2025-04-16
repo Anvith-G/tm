@@ -96,7 +96,7 @@ xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/n
     <servlet-class>org.cms.controller.CourseServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>StudentServlet</servlet-name>
+    <servlet-name>CourseServlet</servlet-name>
     <url-pattern>/Course</url-pattern>
   </servlet-mapping>
     <servlet>
