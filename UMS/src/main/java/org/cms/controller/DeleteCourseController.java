@@ -28,13 +28,14 @@ public class DeleteCourseController extends HttpServlet {
     }
 
     /**
-     * Handles the GET request by fetching the student's details
+     * Handles the GET request by fetching the course details
      * and forwarding to a confirmation page.
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String id = request.getParameter("cid");
+        System.out.println(id);
         Course course = courseRepo.fetchOneCourse(id);
         if (course != null) {
             request.setAttribute("course", course);
@@ -48,7 +49,7 @@ public class DeleteCourseController extends HttpServlet {
     /**
      * Handles the POST request by performing the deletion.
      * The confirmation form in "delete-course.jsp" should submit a POST request
-     * with the student's id (usually via a hidden field).
+     * 
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

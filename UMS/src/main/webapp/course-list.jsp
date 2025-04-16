@@ -37,7 +37,7 @@ HttpSession oldsession=request.getSession(false);
             
             <td>
                 <a href="edit-course?id=<%= c.getCid() %>" class="btn btn-sm btn-primary">Edit</a>
-                <a href="delete-course?id=<%= c.getCid() %>" class="btn btn-sm btn-danger">Delete</a>
+                <a href="delete-course?cid=<%= c.getCid() %>" class="btn btn-sm btn-danger">Delete</a>
             </td>
         </tr>
         <%  }

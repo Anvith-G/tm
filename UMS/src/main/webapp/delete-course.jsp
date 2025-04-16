@@ -12,13 +12,13 @@
 <body>
 <div class="container mt-5">
     <h2 class="mb-4">Delete Course</h2>
-    <p>Are you sure you want to delete the following student?</p>
+    <p>Are you sure you want to delete the following Course?</p>
     <ul>
         <li><strong>Course Name:</strong> <%= course.getCname() %></li>
         <li><strong>Credit</strong> <%= course.getCredit() %></li>
     </ul>
     <form action="delete-course" method="post">
-        <input type="hidden" name="id" value="<%= course.getCid() %>">
+        <input type="hidden" name="cid" value="<%= course.getCid() %>">
         <button type="submit" class="btn btn-danger">Confirm Delete</button>
         <a href="student-list" class="btn btn-secondary">Cancel</a>
     </form>

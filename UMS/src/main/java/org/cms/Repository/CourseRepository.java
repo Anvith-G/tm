@@ -97,29 +97,26 @@ public int deleteCourse(String sid) {
 	}catch(Exception e) {}
 	return r;
 }
-public Course fetchOneCourse(String cid) {
+public Course fetchOneCourse(String id) {
 	Course s=new Course();
 	try {
-		String sql="select * from cource where courseid=?";
+		String sql="select * from cource where courseid=?";	
 		PreparedStatement ps=connection.getConnection().prepareStatement(sql);
-		ps.setString(1, cid);
-		ResultSet set=ps.executeQuery();
+		ps.setString(1,id);
+		ResultSet r=ps.executeQuery();
+		while(r.next()) {
+		s.setCid(r.getString(1));
+		s.setCname(r.getString(2));
+		s.setCredit(r.getString(3));
+		s.setCtype(r.getString(4));
 		
-		while(set.next()) {
-			s.setCid(set.getString(1));
-			s.setCname(set.getString(2));
-			s.setCredit(set.getString(3));
-			s.setCtype(set.getString(4));
-			
 		}
-		
-		
-		
-	}
-	catch (Exception e) {
-		
+		System.out.print(s);
+	}catch(Exception e) {
+		System.out.println(e);
 	}
 	return s;
+
 	
 }
 

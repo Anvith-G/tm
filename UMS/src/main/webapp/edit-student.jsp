@@ -12,7 +12,7 @@
 <body>
 <div class="container mt-5">
     <h2 class="mb-4">Edit Student</h2>
-    <form action="update-student" method="post">
+    <form action="update-student" method="get">
         <input type="hidden" name="id" value="<%= student.getSid() %>">
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
