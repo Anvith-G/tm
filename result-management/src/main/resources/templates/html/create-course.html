@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Course</title>
+</head>
+<body>
+
+<h2>Create Course</h2>
+
+<form th:action="@{/admin/create-course}" th:object="${course}" method="post">
+
+    <label>Name:</label>
+    <input type="text" th:field="*{name}" /><br/><br/>
+
+    <label>Code:</label>
+    <input type="text" th:field="*{code}" /><br/><br/>
+
+    <label>Semester:</label>
+    <input type="text" th:field="*{semester}" /><br/><br/>
+
+    <!-- Department Selection -->
+    <label>Department:</label>
+    <select id="department" name="departmentId" onchange="loadInstructors()">
+        <option value="">-- Select Department --</option>
+        <option th:each="dept : ${departments}" 
+                th:value="${dept.id}" 
+                th:text="${dept.name}">
+        </option>
+    </select>
+    <br/><br/>
+
+    <!-- Instructor Selection -->
+    <label>Instructor:</label>
+    <select id="instructor" name="instructorId">
+        <option value="">-- Select Instructor --</option>
+    </select>
+    <br/><br/>
+
+    <button type="submit">Create Course</button>
+
+</form>
+
+<!-- JavaScript Section -->
+<script>
+function loadInstructors() {
+    var departmentId = document.getElementById("department").value;
+    var instructorSelect = document.getElementById("instructor");
+
+    // Clear previous options
+    instructorSelect.innerHTML = '<option value="">-- Select Instructor --</option>';
+
+    if (departmentId) {
+        console.log("Selected departmentId:", departmentId); // Debug
+        fetch('/admin/instructors/department/' + departmentId)
+            .then(response => response.json())
+            .then(data => {
+                console.log("Fetched instructors:", data); // Debug
+                if (data.length > 0) {
+                    data.forEach(instr => {
+                        var option = document.createElement('option');
+                        option.value = instr.id;    // Must match JSON
+                        option.text = instr.name;   // Must match JSON
+                        instructorSelect.appendChild(option);
+                    });
+                } else {
+                    var option = document.createElement('option');
+                    option.disabled = true;
+                    option.text = 'No instructors available';
+                    instructorSelect.appendChild(option);
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching instructors:', error);
+                var option = document.createElement('option');
+                option.disabled = true;
+                option.text = 'Error loading instructors';
+                instructorSelect.appendChild(option);
+            });
+    }
+}
+</script>
+
+</body>
+</html>
